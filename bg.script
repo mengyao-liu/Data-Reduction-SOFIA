@@ -1,0 +1,67 @@
+im = READFITS('CepE_SOFIA_19.7um_cal_ast.fits', hdr ) 
+hextract, im, hdr,111,252,83,214
+writefits, 'CepE_SOFIA_19.7um_cal_cut.fits', im ,hdr 
+data = readfits('CepE_SOFIA_19.7um_cal_cut.fits',h)
+data2=data
+data2[65:80,61:77]=0
+a=skyfitm(data, 3, 3, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_19.7um_cal_skyfitm.fits', data-a ,h 
+
+
+im = READFITS('CepE_SOFIA_31.5um_cal_ast.fits', hdr ) 
+hextract, im, hdr,119,257,92,233
+writefits, 'CepE_SOFIA_31.5um_cal_cut.fits', im ,hdr 
+data = readfits('CepE_SOFIA_31.5um_cal_cut.fits',h)
+data2=data
+data2[60:82,60:82]=0
+a=skyfitm(data, 1, 1, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_31.5um_cal_skyfitm.fits', data-a ,h 
+
+
+
+im = READFITS('CepE_SOFIA_37.1um_cal_ast.fits', hdr ) 
+hextract, im, hdr,118,256,90,230
+writefits, 'CepE_SOFIA_37.1um_cal_cut.fits', im ,hdr 
+data = readfits('CepE_SOFIA_37.1um_cal_cut.fits',h)
+data2=data
+data2[60:80,60:80]=0
+a=skyfitm(data, 2, 2, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_37.1um_cal_skyfitm.fits', data-a ,h 
+
+
+im = READFITS('CepE_SOFIA_7.7um_cal_ast.fits', hdr ) 
+hextract, im, hdr,127,257,88,220
+writefits, 'CepE_SOFIA_7.7um_cal_cut.fits', im ,hdr 
+
+
+; combined images
+data = readfits('CepE_SOFIA_7.7um_cal_ast_combine.fits',h)
+data2=data
+data2[61:71,61:71]=0
+a=skyfitm(data, 2, 2, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_7.7um_cal_ast_combine_skyfitm.fits', data-a ,h 
+
+
+
+
+data = readfits('CepE_SOFIA_19.7um_cal_ast_combine.fits',h)
+data2=data
+data2[65:80,61:77]=0
+a=skyfitm(data, 3, 3, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_19.7um_cal_ast_combine_skyfitm.fits', data-a ,h 
+
+
+data = readfits('CepE_SOFIA_37.1um_cal_ast_combine.fits',h)
+data2=data
+data2[60:80,60:80]=0
+a=skyfitm(data, 2, 2, data2)
+atv,data-a
+writefits, 'CepE_SOFIA_37.1um_cal_ast_combine_skyfitm.fits', data-a ,h 
+
+
+
